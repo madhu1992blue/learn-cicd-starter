@@ -7,7 +7,8 @@ import (
 func TestNoAuthHeaderErrors(t *testing.T) {
 	noAuthHeader := &http.Header {}
 	_, err := GetAPIKey(*noAuthHeader)
-	if err !=  ErrNoAuthHeaderIncluded{
+	// TODO(madhusudann): Fix condition after breaking test intentionally for CI
+	if err ==  ErrNoAuthHeaderIncluded{
 		t.Fatalf("Wanted error: %v but didn't receive one", ErrNoAuthHeaderIncluded)
 	}
 }
